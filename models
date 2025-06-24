@@ -1,0 +1,54 @@
+const alunos = [
+  { id: 1, nome: 'João Silva', idade: 20 },
+  { id: 2, nome: 'Maria Oliveira', idade: 22 }
+];
+
+function listarAlunos() {
+  return alunos;
+}
+
+function buscarAlunoPorId(id) {
+  return alunos.find(aluno => aluno.id === id);
+}
+
+module.exports = {
+  listarAlunos,
+  buscarAlunoPorId
+};
+
+const professores = [
+  { id: 1, nome: 'Carlos Souza', disciplina: 'Matemática' },
+  { id: 2, nome: 'Ana Lima', disciplina: 'História' }
+];
+
+function listarProfessores() {
+  return professores;
+}
+
+function buscarProfessorPorId(id) {
+  return professores.find(prof => prof.id === id);
+}
+
+module.exports = {
+  listarProfessores,
+  buscarProfessorPorId
+};
+const professorModel = require('../models/professor.model');
+
+function listar(req, res) {
+  const professores = professorModel.listarProfessores();
+  res.status(200).json(professores);
+}
+
+function buscarPorId(req, res) {
+  const id = parseInt(req.params.id);
+  const professor = professorModel.buscarProfessorPorId(id);
+  
+  if (professor) {
+    res.json(professor);
+  } else {
+    res.status(404).json({ erro: 'Professor não encontrado' });
+  }
+}
+
+module.exports = { listar, buscarPorId };

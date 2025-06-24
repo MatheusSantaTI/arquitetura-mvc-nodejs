@@ -1,0 +1,15 @@
+/escola-api
+├── controllers/
+│   ├── aluno.controller.js
+│   ├── curso.controller.js
+│   └── professor.controller.js
+├── models/
+│   ├── aluno.model.js
+│   ├── curso.model.js
+│   └── professor.model.js
+├── routes/
+│   ├── aluno.routes.js
+│   ├── curso.routes.js
+│   └── professor.routes.js
+├── app.js
+├── package.json
